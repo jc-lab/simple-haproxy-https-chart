@@ -1,0 +1,27 @@
+image:
+  registry: ghcr.io
+  repository: jc-lab/simple-haproxy-https
+  tag: v0.0.1
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+
+backends:
+  - "server s1 192.168.0.1:443 check ssl verify none"
+
+service:
+  type: ClusterIP
+  clusterIP: ""
+  loadBalancerIP: ""
+  loadBalancerSourceRanges: []
+  externalIPs: []
+  annotations: {}
+  # externalTrafficPolicy: Cluster
+
+frontendTlsSecretName: ""
+
+extraVolumeMounts: []
+
+extraVolumes: []
+
+extraEnv: []
+

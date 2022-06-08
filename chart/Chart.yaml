@@ -1,0 +1,4 @@
+name: simple-haproxy-https
+version: 0.0.1
+appVersion: 0.0.1
+kubeVersion: ">=1.17.0"
