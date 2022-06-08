@@ -85,7 +85,7 @@ spec:
         image: {{ include "image" . | quote }}
         imagePullPolicy: {{ .Values.image.pullPolicy | quote }}
         command:
-          - /opt/start-watcher.sh
+          - /opt/start-watch.sh
         volumeMounts:
           - name: shared
             mountPath: "/var/run/haproxy"
