@@ -11,7 +11,8 @@ metadata:
 spec:
   type: {{ .Values.service.type }}
   selector:
-    {{- include "haproxy.selectorLabels" . | nindent 4 }}
+    {{- include "commonLabels" . | indent 4 }}
+    app: haproxy
   {{- if .Values.service.externalTrafficPolicy }}
   externalTrafficPolicy: {{ .Values.service.externalTrafficPolicy }}
   {{- end }}
