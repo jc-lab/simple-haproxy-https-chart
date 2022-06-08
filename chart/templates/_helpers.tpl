@@ -17,8 +17,8 @@ helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 {{- end -}}
 
 {{- define "getFrontTlsSecretName" -}}
-{{- if .Values.frontTlsSecretName -}}
-{{- .Values.frontTlsSecretName -}}
+{{- if .Values.frontendTlsSecretName -}}
+{{- .Values.frontendTlsSecretName -}}
 {{- else -}}
 {{- print .Release.Name "-frontend-tls" -}}
 {{- end -}}
