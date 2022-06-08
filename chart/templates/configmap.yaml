@@ -3,8 +3,8 @@ kind: ConfigMap
 metadata:
   name: "{{ .Release.Name }}-config"
   labels:
-    {{- include "commonLabels" .root | indent 4 }}
+    {{- include "commonLabels" . | indent 4 }}
 data:
   backends: |
-    {{- join "\n" .Values.backends }}
+{{ join "\n" .Values.backends | indent 4 }}
 

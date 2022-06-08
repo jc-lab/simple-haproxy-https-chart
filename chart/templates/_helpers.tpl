@@ -5,9 +5,10 @@ helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 {{- end }}
 
 {{- define "image" -}}
-{{- $registryName := .image.registry -}}
-{{- $repositoryName := .image.repository -}}
-{{- $tag := .image.tag | toString -}}
+{{- $image := .Values.image -}}
+{{- $registryName := $image.registry -}}
+{{- $repositoryName := $image.repository -}}
+{{- $tag := $image.tag | toString -}}
 {{- if $registryName }}
 {{- printf "%s/%s:%s" $registryName $repositoryName $tag -}}
 {{- else -}}
@@ -20,5 +21,6 @@ helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
 {{- .Values.frontTlsSecretName -}}
 {{- else -}}
 {{- print .Release.Name "-frontend-tls" -}}
+{{- end -}}
 {{- end -}}
 
