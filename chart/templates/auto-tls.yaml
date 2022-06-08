@@ -1,0 +1,16 @@
+{{- if not .Values.frontendTlsSecretName }}
+{{- $ca := genCA "test ca" 365 }}
+{{- $cert := genSignedCert "example.com" nil nil 365 $ca }}
+
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/tls
+metadata:
+  name: {{ include "getFrontTlsSecretName" . }}
+data:
+  ca.crt: {{ $ca.Cert | b64enc | quote }}
+  tls.crt: {{ $cert.Cert | b64enc | quote }}
+  tls.key: {{ $cert.Key | b64enc | quote }}
+
+{{ end }}
+
